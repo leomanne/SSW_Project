@@ -10,9 +10,8 @@ export class AppComponent {
   
   reservation: boolean = false; //used to enable form 
 
-
-  startReservation() {
-    // funzione che attiva il form per la prenotazione
+  
+  setReservation() { 
     this.reservation = true;
   }
 }

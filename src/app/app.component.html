@@ -5,7 +5,14 @@
     Prenota il biglietto per uno spettacolo
   </button>
 
-  <!-- Creazione di un nuovo spettacolo-->
-<app-create-theater (newShow)="this.listaEventi.push($event)"></app-create-theater>
+  <fieldset *ngIf="reservation">
+    <legend>Inserisci la chiave associata allo spettacolo e premi invio</legend>
+    <input
+      class="inputKey"
+      #key
+      (keyup.enter)="selezionaEvento(key.value); key.value = ''"
+      placeholder="Inserisci qui la chiave"
+    />
+  </fieldset>
 
  

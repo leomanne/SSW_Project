@@ -9,7 +9,7 @@ import { TheaterService } from '../theatre.service';
 export class CreateTheatreComponent implements OnInit {
 
   creazione : boolean = false;
-  @Output() newShow = new EventEmitter<string>();
+  @Output() creaEvento = new EventEmitter<string>();
   //default settings for the theatre 7x10,4x6
   nRighePlatea: number = 7;
   nColPlatea: number = 10;
@@ -60,7 +60,7 @@ ngOnInit(): void {
         const infoTheater = num_slice.concat(theater);
         this.service.setData(chiave, infoTheater).subscribe({
           next: (x: any) => {
-            this.newShow.emit(chiave);
+            this.creaEvento.emit(chiave);
 
             this.notifica =
               'nuovo spettacolo creato codice: "' +

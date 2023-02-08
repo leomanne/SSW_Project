@@ -36,7 +36,7 @@ export class AppComponent {
   }
   
 }
-class Seat {
+export class Seat {
 riga: number;
 colonna: number;
 posizione: string;
@@ -47,5 +47,33 @@ oldName: string;
     this.posizione = val;
     this.oldName = val;
   }
+  //getters but not used
+  getRiga(){
+    return this.riga;
+  }
+  getColonna(){
+    return this.colonna;
+  }
+  getPosizione(){
+    return this.posizione;
+  }
+  getoldName(){
+    return this.oldName;
+  }
+
+  //setters
+  setRiga(val){
+    this.riga = val;
+  }
+  setColonna(val){
+     this.colonna = val;
+  }
+  setPosizione(val){
+    this.posizione = val;
+  }
+  setoldName(val){
+    this.oldName = val;
+  }
+
 }
 

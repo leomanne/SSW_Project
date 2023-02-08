@@ -35,4 +35,26 @@
   (isFastReservation)="fastReservation = $event"
 ></app-get-reservation-name>
 -->
+
+
+
+
+
+
+
+<!-- Conferma prenotazione -->
+<button
+  *ngIf="
+    seat != undefined &&
+    bookerName != undefined &&
+    seat.oldName == 'x' &&
+    !fastReservation
+  "
+  (click)="confirmReservation()"
+>
+  Conferma prenotazione!
+</button>
+
+<!-- Notifica di avvenuta prenotazione -->
+<h2>{{ notifica }}</h2>
  

@@ -1,13 +1,11 @@
 <!--title -->
 <hello name="{{ title }}"></hello>
-
   <button (click)="setReservation()">
     Prenota il biglietto per uno spettacolo
   </button>
 
 <!-- Creazione di un nuovo spettacolo-->
-<app-create-theater (creaEvento)="this.listaEventi.push($event)"></app-create-theater>
-
+<app-create-theatre (creaEvento)="setTheatre($event)"></app-create-theatre>
   <fieldset *ngIf="reservation">
     <legend>Inserisci la chiave associata allo spettacolo e premi invio</legend>
     <input
@@ -25,6 +23,15 @@
     {{ show }}
   </div>
 </div>
+
+<!-- Titolo dello spettacolo selezionato -->
+<h2 *ngIf="chiaveEventoAttivo != undefined">Spettacolo con codice "{{ chiaveEventoAttivo }}"</h2>
+<!-- Form di inserimento nome per la prenotazione -->
+<app-get-reservation
+  [key]="chiaveEventoAttivo"
+  (newBookerName)="bookerName = $event"
+  (isFastReservation)="fastReservation = $event"
+></app-get-reservation>
 
 <!-- Titolo dello spettacolo selezionato -->
 <h2 *ngIf="chiaveEventoAttivo != undefined">Spettacolo con codice "{{ chiaveEventoAttivo }}"</h2>

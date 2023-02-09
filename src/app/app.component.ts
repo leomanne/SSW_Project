@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { TheaterService } from './theatre.service';
+import { TheatreService } from './theatre.service';
 
 @Component({
   selector: 'my-app',
@@ -21,7 +21,7 @@ export class AppComponent {
   setReservation() { 
     this.reservation = true;
   }
-  constructor(private service: TheaterService) {}
+  constructor(private service: TheatreService) {}
   selezionaEvento(key: string) {
     this.service.getData(key).subscribe({
       next: (x: any) => {
@@ -34,11 +34,15 @@ export class AppComponent {
       error: (err) => alert('Chiave invalida!'), //
     });
   }
+  setTheatre(val : string){
+    this.listaEventi.push(val);
+  }
   confirmReservation() {
     if (this.seat == undefined) {
       alert('Posto non selezionato!');
       return;
     }
+    
 
     if (this.bookerName == undefined) {
       alert('Nome prenotazione non inserito!');

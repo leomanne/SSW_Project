@@ -1,26 +1,26 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { TheaterService } from '../theatre.service';
+import { TheatreService } from '../theatre.service';
 
 @Component({
   selector: 'app-create-theatre',
   templateUrl: './create-theatre.component.html',
-  styleUrls: ['./create-theatre.component.css']
+  styleUrls: ['./create-theatre.component.css'],
 })
 export class CreateTheatreComponent implements OnInit {
-
-  creazione : boolean = false;
   @Output() creaEvento = new EventEmitter<string>();
+  creazione: boolean = false;
+
   //default settings for the theatre 7x10,4x6
   nRighePlatea: number = 7;
   nColPlatea: number = 10;
   nRigheStage: number = 4;
   nColStage: number = 6;
   notifica: string;
-  constructor(private service: TheaterService) {}
-ngOnInit(): void {
-  throw new Error('Method not implemented.');
-}
-  
+  constructor(private service: TheatreService) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
   /**
    * SETTERS
    */
@@ -33,15 +33,15 @@ ngOnInit(): void {
   }
 
   setnColPlatea(value: string) {
-    this.nColPlatea = parseFloat(value);// 
+    this.nColPlatea = parseFloat(value); //
   }
 
   setnRigheStage(value: string) {
-    this.nRigheStage = parseFloat(value);//
+    this.nRigheStage = parseFloat(value); //
   }
 
   setnColStage(value: string) {
-    this.nColStage = parseFloat(value);//
+    this.nColStage = parseFloat(value); //
   }
 
   confermaCreazione() {
@@ -61,7 +61,6 @@ ngOnInit(): void {
         this.service.setData(chiave, infoTheater).subscribe({
           next: (x: any) => {
             this.creaEvento.emit(chiave);
-
             this.notifica =
               'nuovo spettacolo creato codice: "' +
               chiave +
@@ -87,5 +86,4 @@ ngOnInit(): void {
 
     this.creazione = false;
   }
-
 }

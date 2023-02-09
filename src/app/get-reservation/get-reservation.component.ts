@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-get-reservation-name',
-  templateUrl: './get-reservation-name.component.html',
-  styleUrls: ['./get-reservation-name.component.css'],
+  selector: 'app-get-reservation',
+  templateUrl: './get-reservation.component.html',
+  styleUrls: ['./get-reservation.component.css'],
 })
 export class GetReservationNameComponent implements OnInit {
   @Input() key: string ;
@@ -11,7 +11,7 @@ export class GetReservationNameComponent implements OnInit {
   @Output() newBookerName = new EventEmitter<string>();
 
   @Output() isFastReservation = new EventEmitter<boolean>();
-  
+
   name: string;
   fastReservation: boolean = false;
 

@@ -33,22 +33,6 @@
   (isFastReservation)="fastReservation = $event"
 ></app-get-reservation>
 
-<!-- Titolo dello spettacolo selezionato -->
-<h2 *ngIf="chiaveEventoAttivo != undefined">Spettacolo con codice "{{ chiaveEventoAttivo }}"</h2>
-<!-- Form di inserimento nome per la prenotazione 
-<app-get-reservation-name
-  [key]="chiaveEventoAttivo"
-  (newBookerName)="bookerName = $event"
-  (isFastReservation)="fastReservation = $event"
-></app-get-reservation-name>
--->
-
-
-
-
-
-
-
 <!-- Conferma prenotazione -->
 <button
   *ngIf="

@@ -18,6 +18,22 @@ export class AppComponent {
   bookerName: string; //nome della prenotazione attiva
   notifica: string;
   seat = new Seat(undefined);
+
+  setNewSeat(newSeat: {
+    riga: number;
+    colonna: number;
+    posizione: string;
+    oldName: string;
+  }) {
+    this.seat.colonna = newSeat.colonna;
+    this.seat.riga = newSeat.riga;
+    this.seat.posizione = newSeat.posizione;
+    this.seat.oldName = newSeat.oldName;
+    if (this.fastReservation && this.seat.oldName == 'x') {
+      this.confirmReservation();
+    }
+  }
+
   setReservation() { 
     this.reservation = true;
   }

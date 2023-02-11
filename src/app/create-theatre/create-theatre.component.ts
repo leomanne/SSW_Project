@@ -62,17 +62,17 @@ export class CreateTheatreComponent implements OnInit {
           next: (x: any) => {
             this.creaEvento.emit(chiave);
             this.notifica =
-              'nuovo spettacolo creato codice: "' +
+              'nuovo spettacolo creato codice: ["' +
               chiave +
-              '" con numero di posti in platea: ' +
+              '"] \ncon numero di posti in platea: [' +
               this.nRighePlatea +
-              ' con numero file:' +
+              '] con numero file:[' +
               this.nColPlatea +
-              ' posti e un palco di: ' +
+              '] posti e un palco di: [' +
               this.nRigheStage +
-              ' file di:' +
+              '] file di:[' +
               this.nColStage +
-              ' posti';
+              '] posti';
           },
           error: (err) => {
             alert(`Errore: ${JSON.stringify(err)}`);

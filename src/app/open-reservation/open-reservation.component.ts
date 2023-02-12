@@ -15,8 +15,7 @@ export class OpenreservationComponent implements OnInit {
   @Output() postoSelezionato = new EventEmitter<any>();
 
   //struttura usata per salvare un posto a sedere
-  seat: { riga: number; colonna: number; posizione: string; oldName: string } =
-    undefined;
+  seat = new Seat(undefined);
   constructor() {}
 
   ngOnInit() {}
@@ -24,7 +23,10 @@ export class OpenreservationComponent implements OnInit {
    * Metodo usato per fare una send di un posto a sedere
    */
   addSeat(riga: number, colonna: number, posizione: string, oldName: string) {
-    this.seat = { riga, colonna, posizione, oldName };
+    this.seat.colonna = colonna;
+    this.seat.posizione = posizione;
+    this.seat.riga = riga;
+    this.seat.oldName = oldName;
     this.postoSelezionato.emit(this.seat);
   }
 

@@ -17,11 +17,10 @@ export class AppComponent {
   chiaveEventoAttivo: string; //key di evento attivo ora
   bookerName: string; //nome della prenotazione attiva
   notifica: string; //stringa utilizzata per stampare le informazioni degli spettacoli creati
-  seat: { riga: number; colonna: number; posizione: string; oldName: string } =
-    undefined; //struttura dati usata per salvare un posto a sedere, altra opzione era creare una classe Seat (seat = new Seat());
+  seat = new Seat(undefined);; //struttura dati usata per salvare un posto a sedere, altra opzione era creare una 
 
     
-    setNewSeat(newSeat:any ) {
+    setNewSeat(newSeat: Seat ) {
       this.seat = newSeat;
       if (this.fastReservation && this.seat.oldName == 'x') {
         this.confirmReservation();

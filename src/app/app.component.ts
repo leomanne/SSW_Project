@@ -76,7 +76,7 @@ export class AppComponent {
     } else {
       this.stage[this.seat.riga][this.seat.colonna] = this.bookerName;
     }
-    
+
     const newTheaterTmp = this.platea.concat(this.stage);
     const num_slice: any[] = [this.platea.length];
     const newTheater = num_slice.concat(newTheaterTmp);
@@ -93,7 +93,7 @@ export class AppComponent {
     });
   }
 
-  
+  //class never used
 }
 export class Seat {
 riga: number;

@@ -2,7 +2,7 @@
 <div *ngFor="let row of platea; let i = index">
   <button
     *ngFor="let seat of row; let j = index"
-    (click)="addSeat(i, j, 'platea', seat)"
+    (click)="aggiungiPosto(i, j, 'platea', seat)"
     style="background-color:{{ colorSeat(seat, i, j, 'platea') }}"
     class="posto"
   >
@@ -12,11 +12,11 @@
 
 <br><br/>
 
-<h3 *ngIf="stage.length == 0">Palco</h3>
+<h3 *ngIf="stage.length != 0">Palco</h3>
 <div *ngFor="let row of stage; let i = index">
   <button
     *ngFor="let seat of row; let j = index"
-    (click)="addSeat(i, j, 'palco', seat)"
+    (click)="aggiungiPosto(i, j, 'palco', seat)"
     style="background-color:{{ colorSeat(seat, i, j, 'palco') }}"
     class="posto"
   >

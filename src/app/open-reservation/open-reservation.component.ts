@@ -22,7 +22,7 @@ export class OpenreservationComponent implements OnInit {
   /**
    * Metodo usato per fare una send di un posto a sedere
    */
-  addSeat(riga: number, colonna: number, posizione: string, oldName: string) {
+   aggiungiPosto(riga: number, colonna: number, posizione: string, oldName: string) {
     this.seat.colonna = colonna;
     this.seat.posizione = posizione;
     this.seat.riga = riga;
@@ -35,7 +35,7 @@ export class OpenreservationComponent implements OnInit {
       if (this.seat != undefined) {
         if (this.seat.riga == riga && this.seat.colonna == colonna && this.seat.posizione == posizione && !this.fastReservation
         ) {
-          return 'green';
+          return 'blue';
         }
       }
       return '#8FBC8F';

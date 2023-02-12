@@ -10,7 +10,7 @@ export class AppComponent {
   
   title = 'Prenotazione biglietti';
   reservation: boolean = false; //usato per abilitare il form 
-  listaEventi: string[] = undefined;
+  listaEventi: string[] = [];
   platea: any[] = []; //array generico che contiene i posti in platea
   stage: any[] = [];  //uguale
   fastReservation: boolean = false; //variabile booleana per capire se e' stata richiesta una reservation rapida

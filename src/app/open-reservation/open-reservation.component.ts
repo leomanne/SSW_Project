@@ -12,20 +12,13 @@ export class OpenreservationComponent implements OnInit {
   @Input() bookerName: string | undefined;
   @Input() fastReservation: boolean = false;
   @Output() postoSelezionato = new EventEmitter<any>();
-  //seat = new Seat(undefined);
+
   seat: { riga: number; colonna: number; posizione: string; oldName: string } =
-  undefined;
+    undefined;
   constructor() {}
 
   ngOnInit() {}
 
-  /*addSeat(riga: number, colonna: number, posizione: string, oldName: string) {
-    this.seat.setRiga(riga);
-    this.seat.setColonna(colonna);
-    this.seat.setPosizione(posizione);
-    this.seat.setoldName(oldName);
-    this.postoSelezionato.emit(this.seat);
-  }*/
   addSeat(riga: number, colonna: number, posizione: string, oldName: string) {
     this.seat = { riga, colonna, posizione, oldName };
     this.postoSelezionato.emit(this.seat);
@@ -40,7 +33,7 @@ export class OpenreservationComponent implements OnInit {
           this.seat.posizione == posizione &&
           !this.fastReservation
         ) {
-          return 'yellow';
+          return 'green';
         }
       }
       return '#8FBC8F';

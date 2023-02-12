@@ -9,35 +9,39 @@ import { TheatreService } from './theatre.service';
 export class AppComponent {
   
   title = 'Prenotazione biglietti';
-  reservation: boolean = false; //used to enable form 
+  reservation: boolean = false; //usato per abilitare il form 
   listaEventi: string[] = ['422d9016'];
-  platea: any[] = [];//generic array
-  stage: any[] = []; //generic array 
-  fastReservation: boolean = false;
+  platea: any[] = []; //array generico che contiene i posti in platea
+  stage: any[] = [];  //uguale
+  fastReservation: boolean = false; //variabile booleana per capire se e' stata richiesta una reservation rapida
   chiaveEventoAttivo: string; //key di evento attivo ora
   bookerName: string; //nome della prenotazione attiva
-  notifica: string;
-  seat = new Seat(undefined);
+  notifica: string; //stringa utilizzata per stampare le informazioni degli spettacoli creati
+  seat: { riga: number; colonna: number; posizione: string; oldName: string } =
+    undefined; //struttura dati usata per salvare un posto a sedere, altra opzione era creare una classe Seat (seat = new Seat());
 
-  setNewSeat(newSeat: {
-    riga: number;
-    colonna: number;
-    posizione: string;
-    oldName: string;
-  }) {
-    this.seat.colonna = newSeat.colonna;
-    this.seat.riga = newSeat.riga;
-    this.seat.posizione = newSeat.posizione;
-    this.seat.oldName = newSeat.oldName;
-    if (this.fastReservation && this.seat.oldName == 'x') {
-      this.confirmReservation();
+    
+    setNewSeat(newSeat: {
+      riga: number;
+      colonna: number;
+      posizione: string;
+      oldName: string;
+    }) {
+      this.seat = newSeat;
+      if (this.fastReservation && this.seat.oldName == 'x') {
+        this.confirmReservation();
+      }
     }
-  }
 
+    /**
+     * metodo usato per abilitare il form settando la variabile a true
+     */
   setReservation() { 
     this.reservation = true;
   }
   constructor(private service: TheatreService) {}
+
+
   selezionaEvento(key: string) {
     this.service.getData(key).subscribe({
       next: (x: any) => {
@@ -53,23 +57,26 @@ export class AppComponent {
   setTheatre(val : string){
     this.listaEventi.push(val);
   }
+  /**
+   * Metodo di conferma
+   */
   confirmReservation() {
+    
     if (this.seat == undefined) {
       alert('Posto non selezionato!');
       return;
     }
-    
-
     if (this.bookerName == undefined) {
       alert('Nome prenotazione non inserito!');
       return;
     }
-
+    
     if (this.seat.posizione == 'platea') {
       this.platea[this.seat.riga][this.seat.colonna] = this.bookerName;
     } else {
       this.stage[this.seat.riga][this.seat.colonna] = this.bookerName;
     }
+    
     const newTheaterTmp = this.platea.concat(this.stage);
     const num_slice: any[] = [this.platea.length];
     const newTheater = num_slice.concat(newTheaterTmp);

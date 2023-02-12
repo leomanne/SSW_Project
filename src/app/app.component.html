@@ -1,6 +1,6 @@
 <!--title -->
 <hello name="{{ title }}"></hello>
-  <button (click)="setReservation()">
+  <button class = "btn-toolset" (click)="setReservation()">
     Prenota il biglietto per uno spettacolo
   </button>
 
@@ -43,7 +43,7 @@
   (selectedSeat)="setNewSeat($event)"
 ></app-openreservation>-->
 <!-- Conferma prenotazione -->
-<button
+<button class = "btn-toolset"
   *ngIf="
     seat != undefined &&
     bookerName != undefined &&

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//import necessari per collegare le varie component del progetto
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { TheatreService } from './theatre.service';

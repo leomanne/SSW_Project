@@ -1,1 +1,12 @@
-<p></p>
+<h3 *ngIf="platea.length != 0">Platea</h3>
+<div *ngFor="let row of platea; let i = index">
+  <button
+    *ngFor="let seat of row; let j = index"
+    (click)="addSeat(i, j, 'platea', seat)"
+    style="background-color:{{ colorSeat(seat, i, j, 'platea') }}"
+    class="posto"
+  >
+    F{{ i + 1 }}-P{{ j + 1 }}
+  </button>
+</div>
+

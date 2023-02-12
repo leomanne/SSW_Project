@@ -35,7 +35,7 @@ export class OpenreservationComponent implements OnInit {
       if (this.seat != undefined) {
         if (this.seat.riga == riga && this.seat.colonna == colonna && this.seat.posizione == posizione && !this.fastReservation
         ) {
-          return 'blue';
+          return '#C0C0C0';
         }
       }
       return '#1E90FF';

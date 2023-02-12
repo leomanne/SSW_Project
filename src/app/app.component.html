@@ -33,7 +33,7 @@
   (isFastReservation)="fastReservation = $event"
 ></app-get-reservation>
 
-<!-- Visualizzazione teatro e selezione dei posti 
+<!-- Visualizzazione teatro e selezione dei posti -->
 <app-openreservation
   *ngIf="bookerName != undefined"
   [platea]="platea"
@@ -41,7 +41,7 @@
   [bookerName]="bookerName"
   [fastReservation]="fastReservation"
   (selectedSeat)="setNewSeat($event)"
-></app-openreservation>-->
+></app-openreservation>
 <!-- Conferma prenotazione -->
 <button class = "btn-toolset"
   *ngIf="

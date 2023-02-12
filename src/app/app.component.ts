@@ -21,12 +21,7 @@ export class AppComponent {
     undefined; //struttura dati usata per salvare un posto a sedere, altra opzione era creare una classe Seat (seat = new Seat());
 
     
-    setNewSeat(newSeat: {
-      riga: number;
-      colonna: number;
-      posizione: string;
-      oldName: string;
-    }) {
+    setNewSeat(newSeat:any ) {
       this.seat = newSeat;
       if (this.fastReservation && this.seat.oldName == 'x') {
         this.confirmReservation();

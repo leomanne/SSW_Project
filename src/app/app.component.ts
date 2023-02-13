@@ -1,6 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 import { TheatreService } from './theatre.service';
 
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -8,19 +9,19 @@ import { TheatreService } from './theatre.service';
 })
 export class AppComponent {
   
-  title = 'Prenotazione biglietti';
-  reservation: boolean = false; //usato per abilitare il form 
+  title = 'Pagina prenotazione biglietti';
+  prenotazione: boolean = false; //usato per abilitare il form 
   listaEventi: string[] = [];
   platea: any[] = []; //array generico che contiene i posti in platea
   stage: any[] = [];  //uguale
   fastReservation: boolean = false; //variabile booleana per capire se e' stata richiesta una reservation rapida
-  chiaveEventoAttivo: string; //key di evento attivo ora
-  bookerName: string; //nome della prenotazione attiva
+  chiaveEventoAttivo: string; //codice di evento attivo ora
+  nomePrenotatore: string; //nome della prenotazione attiva
   notifica: string; //stringa utilizzata per stampare le informazioni degli spettacoli creati
-  seat = new Seat(undefined);; //struttura dati usata per salvare un posto a sedere, altra opzione era creare una 
+  seat = new Seat(undefined);; //struttura dati usata per salvare un posto a sedere
 
     
-    setNewSeat(newSeat: Seat ) {
+    setNuovoPosto(newSeat: Seat ) {
       this.seat = newSeat;
       if (this.fastReservation && this.seat.oldName == 'x') {
         this.confirmReservation();
@@ -31,7 +32,7 @@ export class AppComponent {
      * metodo usato per abilitare il form settando la variabile a true
      */
   setReservation() { 
-    this.reservation = true;
+    this.prenotazione = true;
   }
   constructor(private service: TheatreService) {}
 
@@ -48,6 +49,9 @@ export class AppComponent {
       error: (err) => alert('Chiave invalida!'), //
     });
   }
+  /**
+   * Metodo per inserire in listaEventi il codice di un nuovo evento
+   */
   setTheatre(val : string){
     this.listaEventi.push(val);
   }
@@ -55,20 +59,20 @@ export class AppComponent {
    * Metodo di conferma
    */
   confirmReservation() {
-    
+    //checkers
     if (this.seat == undefined) {
       alert('Posto non selezionato!');
       return;
     }
-    if (this.bookerName == undefined) {
+    if (this.nomePrenotatore == undefined) {
       alert('Nome prenotazione non inserito!');
       return;
     }
-    
+    //sostituisci 'x' col nome della persona
     if (this.seat.posizione == 'platea') {
-      this.platea[this.seat.riga][this.seat.colonna] = this.bookerName;
+      this.platea[this.seat.riga][this.seat.colonna] = this.nomePrenotatore;
     } else {
-      this.stage[this.seat.riga][this.seat.colonna] = this.bookerName;
+      this.stage[this.seat.riga][this.seat.colonna] = this.nomePrenotatore;
     }
 
     const newTheaterTmp = this.platea.concat(this.stage);
@@ -87,7 +91,7 @@ export class AppComponent {
     });
   }
 
-  //class never used
+  //class used as a structure
 }
 export class Seat {
 riga: number;
@@ -100,7 +104,7 @@ oldName: string;
     this.posizione = val;
     this.oldName = val;
   }
-  //getters but not used
+  //getters
   getRiga(){
     return this.riga;
   }

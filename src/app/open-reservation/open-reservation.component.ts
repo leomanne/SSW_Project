@@ -10,7 +10,7 @@ export class OpenreservationComponent implements OnInit {
 
   @Input() platea: any[] | undefined;
   @Input() stage: any[] | undefined;
-  @Input() bookerName: string | undefined;
+  @Input() nomePrenotatore: string | undefined;
   @Input() fastReservation: boolean = false;
   @Output() postoSelezionato = new EventEmitter<any>();
 
@@ -18,7 +18,8 @@ export class OpenreservationComponent implements OnInit {
   seat = new Seat(undefined);
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
   /**
    * Metodo usato per fare una send di un posto a sedere
    */

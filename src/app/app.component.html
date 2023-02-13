@@ -1,23 +1,24 @@
-<!--title -->
+<!--titolo -->
 <hello name="{{ title }}"></hello>
+
   <button class = "btn-toolset" (click)="setReservation()">
     Prenota il biglietto per uno spettacolo
   </button>
 
-<!-- Creazione di un nuovo spettacolo-->
+<!-- Creazione di uno spettacolo-->
 <app-create-theatre (creaEvento)="setTheatre($event)"></app-create-theatre>
-  <fieldset *ngIf="reservation">
-    <legend>Inserisci la chiave associata allo spettacolo e premi invio</legend>
+  <fieldset *ngIf="prenotazione">
+    <legend>Inserisci la chiave associata allo spettacolo</legend>
     <input
       class="inputKey"
       #key
       (keyup.enter)="selezionaEvento(key.value); key.value = ''"
-      placeholder="Inserisci qui la chiave"
+      placeholder="Inserisci la chiave"
     />
   </fieldset>
 
   <!-- Lista spettacoli disponibili-->
-<div *ngIf="reservation">
+<div *ngIf="prenotazione">
   <h3>Chiavi spettacoli disponibili:</h3>
   <div *ngFor="let show of listaEventi">
     {{ show }}
@@ -28,28 +29,27 @@
 <h2 *ngIf="chiaveEventoAttivo != undefined">Spettacolo con codice "{{ chiaveEventoAttivo }}"</h2>
 <!-- Form di inserimento nome per la prenotazione -->
 <app-get-reservation
-  [key]="chiaveEventoAttivo"
-  (newBookerName)="bookerName = $event"
+  [chiave]="chiaveEventoAttivo"
+  (nomePrenotatore)="nomePrenotatore = $event"
   (isFastReservation)="fastReservation = $event"
 ></app-get-reservation>
 
 <!-- Visualizzazione teatro e selezione dei posti -->
 <app-openreservation
-  *ngIf="bookerName != undefined"
+  *ngIf="nomePrenotatore != undefined"
   [platea]="platea"
   [stage]="stage"
-  [bookerName]="bookerName"
+  [nomePrenotatore]="nomePrenotatore"
   [fastReservation]="fastReservation"
-  (postoSelezionato)="setNewSeat($event)"
+  (postoSelezionato)="setNuovoPosto($event)"
 ></app-openreservation>
 <!-- Conferma prenotazione -->
 <button class = "btn-toolset"
   *ngIf="
     seat != undefined &&
-    bookerName != undefined &&
+    nomePrenotatore != undefined &&
     seat.oldName == 'x' &&
-    !fastReservation
-  "
+    !fastReservation"
   (click)="confirmReservation()"
 >
   Conferma prenotazione!

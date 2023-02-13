@@ -6,8 +6,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./get-reservation.component.css'],
 })
 export class GetReservationNameComponent implements OnInit {
-  @Input() key: string ;
-  @Output() newBookerName = new EventEmitter<string>();
+  @Input() chiave: string ;
+  @Output() nomePrenotatore = new EventEmitter<string>();
   @Output() isFastReservation = new EventEmitter<boolean>();
   
   name: string; //stringa per il nome del prenotatore
@@ -22,7 +22,7 @@ export class GetReservationNameComponent implements OnInit {
   cambiaNome(Name: string) {
     if (Name != '') {
       this.name = Name;
-      this.newBookerName.emit(this.name); //faccio il send della stringa attraverso l'Event mitter
+      this.nomePrenotatore.emit(this.name); //faccio il send della stringa attraverso l'Event mitter
     }
   }
   /**

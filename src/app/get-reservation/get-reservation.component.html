@@ -1,6 +1,6 @@
-<fieldset *ngIf="key != undefined">
+<fieldset *ngIf="chiave != undefined">
   <legend>
-    Inserisci il nome a cui associare la prenotazione e premi invio
+    Inserisci il nome per cui prenotare
   </legend>
   <input
     placeholder="Inserisci il nome"
@@ -12,16 +12,15 @@
   Seleziona prenotazione veloce:
   <input type="checkbox" #input (click)="setFastReservation(input.checked)" />
 </fieldset>
-<fieldset *ngIf="key != undefined">
+<fieldset *ngIf="chiave != undefined">
 <div *ngIf="name !== undefined">
   <div *ngIf="fastReservation == false">
     <p>
-      <b> {{ name }}, clicca sui posti che vuoi prenotare!<br/>
-      Se vuoi cambiare nome digitane pure uno nuovo</b>.
+      <b> {{ name }}, premi sui posti che vuoi prenotare!<br/></b>.
     </p>
   </div>
   <div *ngIf="fastReservation==true">
-    <p> <b>Ciao {{ name }}, clicca sui posti per prenotarli all'istante</b>!</p>
+    <p> <b>abbiamo salvato il tuo nome {{ name }}, ora clicca sui posti per prenotarli all'istante</b>!</p>
   </div>
 </div>
 </fieldset>

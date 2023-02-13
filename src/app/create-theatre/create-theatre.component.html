@@ -1,32 +1,33 @@
 <h3><button class = "btn-toolset" (click)="setcreazione()">Crea uno spettacolo</button></h3>
 
-<fieldset *ngIf="creazione">
+<fieldset *ngIf="creazione==true">
   <legend>Inserire quanti posti platea e palco</legend>
-  Platea di
+  <p>Seleziona quanti posti ha una fila in platea</p>
   <input
-    type="number" step="1" min="1" max="15" value="10" placeholder="Numero di file platea..."
+    type="number" step="1" min="1" max="100" value="10" placeholder="Numero di file platea"
     #nColPlatea (click)="setnColPlatea(nColPlatea.value)"
   />
-  posti
+  <br><br>
+  <p>Seleziona quante file ha la platea.</p>
   <input
-    type="number" step="1" min="1" max="15" value="7" placeholder="Numero di file platea..."
+    type="number" step="1" min="1" max="100" value="7" placeholder="Numero di file platea"
     #nRighePlatea (click)="setnRighePlatea(nRighePlatea.value)"
   />
-  file.
   <br />
-  Palco di
+  
+  <p>Seleziona quanti posti ha una fila nel palco </p>
   <input
-    type="number" step="1" min="1" max="15" value="6" placeholder="Numero di file platea..."
+    type="number" step="1" min="1" max="100" value="6" placeholder="Numero di file platea"
     #nColStage (click)="setnColStage(nColStage.value)"
   />
-  posti
+  <p>Seleziona quante file ha il palco.</p>
   <input
-    type="number" step="1" min="1" max="15" value="4" placeholder="Numero di file platea..."
+    type="number" step="1" min="1" max="100" value="4" placeholder="Numero di file platea"
     #nrigheStage (click)="setnRigheStage(nrigheStage.value)"
   />
-  file.
+  
   <br /><br />
   <button (click)="confermaCreazione()">Conferma creazione</button>
 </fieldset>
 
-<h3>{{ notifica }}</h3>
+<h2>{{ notifica }}</h2>

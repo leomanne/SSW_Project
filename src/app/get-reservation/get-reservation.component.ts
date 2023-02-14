@@ -6,9 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./get-reservation.component.css'],
 })
 export class GetReservationNameComponent implements OnInit {
-  @Input() chiave: string ;
-  @Output() nomePrenotatore = new EventEmitter<string>();
-  @Output() isFastReservation = new EventEmitter<boolean>();
+  @Input() chiave: string ; //codice dello spettacolo
+  @Output() nomePrenotatore = new EventEmitter<string>(); // nome da cambiare
+  @Output() isFastReservation = new EventEmitter<boolean>();//valore da cambiare per fastreservation
   
   name: string; //stringa per il nome del prenotatore
   fastReservation: boolean = false; //variabile booleana per sapere se e' richiesta una prenotazione rapida

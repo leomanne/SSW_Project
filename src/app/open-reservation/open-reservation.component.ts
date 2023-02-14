@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Seat } from '../app.component';
 
 @Component({
-  selector: 'app-openreservation',
+  selector: 'app-open-reservation',
   templateUrl: './open-reservation.component.html',
   styleUrls: ['./open-reservation.component.css'],
 })
@@ -30,7 +30,9 @@ export class OpenreservationComponent implements OnInit {
     this.seat.oldName = oldName;
     this.postoSelezionato.emit(this.seat);
   }
-
+  /**
+   * Setta il colore dei posti a sedere per mostrarli a schermo
+   */
   colorSeat(seat: string, riga: number, colonna: number, posizione: string) {
     if (seat === 'x') {
       if (this.seat != undefined) {

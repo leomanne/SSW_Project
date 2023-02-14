@@ -35,14 +35,14 @@
 ></app-get-reservation>
 
 <!-- Visualizzazione teatro e selezione dei posti -->
-<app-openreservation
+<app-open-reservation
   *ngIf="nomePrenotatore != undefined"
   [platea]="platea"
   [stage]="stage"
   [nomePrenotatore]="nomePrenotatore"
   [fastReservation]="fastReservation"
   (postoSelezionato)="setNuovoPosto($event)"
-></app-openreservation>
+></app-open-reservation>
 <!-- Conferma prenotazione -->
 <button class = "btn-toolset"
   *ngIf="
